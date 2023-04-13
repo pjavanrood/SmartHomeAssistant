@@ -1,0 +1,554 @@
+/* Global Styles */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+*{
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --outside-opacity: 1; /* define a CSS variable */
+  --outside-z: 10;
+  --inside-z: 0;
+
+  /* turn this to -100 for no buttons and 100 for buttons */
+  --button-vis: -100;
+}
+
+header {
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header element{
+  list-style: none;
+  margin: 0;
+  padding: 30px;
+  display: flex;
+  margin-right: 1rem;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.device-status-bar {
+  margin-top: 50px;
+  margin-left: 400px;
+  margin-right: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.device-status {
+  width: 30%;
+  background-color: #333;
+  padding: 20px;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.device-status h3 {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 5%;
+}
+
+.houseDiv {
+  display: flex;
+  align-items: center;
+}
+
+.house {
+  overflow: hidden;
+  position: relative;
+  top: -70px;
+  width: 750px;
+  height: 750px;
+  min-width: 750px;
+  min-height: 750px;
+  background-color: #2d3336;
+}
+
+.lock-toggle {
+  z-index: var(--button-vis);
+  position: absolute;
+  top: 2%;
+  left: 16%;
+  width: 80px;
+  height: 40px;
+}
+
+.wall-toggle {
+  z-index: 100;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 80px;
+  height: 40px;
+}
+
+.light-on {
+  z-index: var(--button-vis);
+  position: absolute;
+  top: 2%;
+  left: 31%;
+  width: 80px;
+  height: 40px;
+}
+
+.light-red {
+  z-index: var(--button-vis);
+  position: absolute;
+  top: 2%;
+  left: 46%;
+  width: 80px;
+  height: 40px;
+}
+
+.light-green {
+  z-index: var(--button-vis);
+  position: absolute;
+  top: 2%;
+  left: 61%;
+  width: 80px;
+  height: 40px;
+}
+
+.light-blue {
+  z-index: var(--button-vis);
+  position: absolute;
+  top: 2%;
+  left: 76%;
+  width: 80px;
+  height: 40px;
+}
+
+.front-wall {
+  z-index: var(--outside-z);
+  opacity: var(--outside-opacity);
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  top: 369px;
+  left: 50px;
+  transform: translateX(-50%px);
+  transform: skewY(15deg);
+  bottom: -350px;
+  background: #ddd;
+  transition: 0.5s;
+  position: relative;
+}
+
+.door {
+  z-index: var(--outside-z);
+  position: absolute;
+  transform: skewY(15deg);
+  width: 100px;
+  height: 200px;
+  top: 62.2%;
+  left: 25%;
+  background: #141414;
+}
+
+.lock-icon {
+  z-index: var(--outside-z);
+  position: absolute;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  top: 70%;
+  left: 20%;
+  border-radius: 70%;
+  background-color: green;
+}
+
+.lock-icon::before {
+  content: "\f023";
+  font-family: "FontAwesome";
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  line-height: 35px;
+  padding-left: 7px;
+}
+
+.front-wall::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/*
+.front-wall:hover {
+  transform: translateX(-200px) skewY(15deg);
+}
+*/
+
+.side-wall {
+  z-index: var(--outside-z);
+  opacity: var(--outside-opacity);
+  position: absolute;
+  width: 250px;
+  top: 351px;
+  right: 51px;
+  height: 300px;
+  transform: translateX(-50%);
+  transform: skewY(-30deg);
+  background: #ccc;
+  transition: 0.5s;
+}
+
+/*
+.side-wall:hover {
+  transform: translateX(200px) skewY(-30deg);
+}
+*/
+
+.side-wall::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.floor {
+  position: absolute;
+  top: 65.5%;
+  left: 23.3%;
+  height: 210px;
+  width: 53.5%;
+  background-image: url('textures/checker.jpg');
+  background-size: 100% 100%;
+  right: -275px;
+  transform: skewy(15deg) skewx(-50deg);
+}
+
+.couch {
+  position: absolute;
+  top: -65.5%;
+  left: 10%;
+  height: 125%;
+  width: 60%;
+  transform: skewy(-20deg) skewx(40deg) rotateZ(-6deg);
+}
+
+.table {
+  position: absolute;
+  top: -15.5%;
+  left: 15%;
+  height: 155%;
+  width: 70%;
+  transform: skewy(-20deg) skewx(40deg) rotateZ(-6deg);
+}
+
+.roof {
+  z-index: var(--outside-z);
+  opacity: var(--outside-opacity);
+  position: absolute;
+  top: 140px;
+  left: 10px;
+  width: 420px;
+  border-bottom: 125px solid #1b1b1b;
+  border-left: 25px solid transparent;
+  height: 100px;
+  transform: skewY(15deg);
+  transition: 0.5s;
+}
+
+/*
+.roof:hover {
+  transform: translateY(-200px) skewY(15deg);
+}
+*/
+
+.roof::after {
+  content: '';
+  position: absolute;
+  top: -14px;
+  right: -273px;
+  width: 250px;
+  border-bottom: 123px solid #141414;
+  border-right: 25px solid transparent;
+  transform: skewY(-40deg);
+}
+
+.roof::before {
+  content: '';
+  position: absolute;
+  top: -109px;
+  left: 125px;
+  height: 210px;
+  width: 420px;
+  background: #242424;
+  right: -275px;
+  transform: skewx(-50deg);
+}
+
+.inside-wall-right {
+  overflow: hidden;
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  top: 30%;
+  left: 40%;
+  background: rgb(153, 150, 145);
+  transform: translateX(-50%);
+  transform: skewY(15deg);
+  bottom: -350px;
+}
+
+.led-left {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 0, 0, 1);
+}
+
+.led-right {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 0, 0, 1);
+}
+
+.inside-wall-left {
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  width: 250px;
+  top: 32.5%;
+  left: 6.71%;
+  height: 300px;
+  background: rgb(136, 133, 128);
+  transform: translateX(-50%);
+  transform: skewY(-30deg);
+  transition: 0.5s;
+}
+
+/* Footer Styles */
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+}
+
+canvas {
+  width: 1000;
+  height: 200;
+}
+
+/* Audio Bar Style */
+
+#sound_bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #333;
+  padding: 70px;
+}
+
+#sound_bar button {
+  margin: 10px;
+  font-size: 20px;
+  padding: 10px 20px;
+  background-color: white;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.audiovis {
+  height: 50px;
+  background-color: #333;
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* animation classes */
+
+.move-front-wall {
+  animation-name: moveFrontWallLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.move-front-wall-back {
+  animation-name: moveFrontWallRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.move-lock {
+  animation-name: moveLockLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.move-lock-back {
+  animation-name: moveLockRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.move-side-wall {
+  animation-name: moveSideWallRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.move-side-wall-back {
+  animation-name: moveSideWallLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.move-roof {
+  animation-name: moveRoofUp;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.move-roof-back {
+  animation-name: moveRoofDown;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.toggle-lock {
+  background-color: red;
+}
+
+.led-on {
+  background-color: white;
+  box-shadow: 0 0 200px 30px #fff
+}
+
+.led-red {
+  background-color: red;
+  box-shadow: 0 0 200px 30px red
+}
+
+.led-green {
+  background-color: green;
+  box-shadow: 0 0 200px 30px green
+}
+
+.led-blue {
+  background-color: blue;
+  box-shadow: 0 0 200px 30px blue
+}
+
+/* keyframes */
+
+@keyframes moveFrontWallLeft {
+  from {
+    transform: translateX(0) skewY(15deg);
+  }
+  to {
+    transform: translateX(-500px) skewY(15deg);
+  }
+}
+
+@keyframes moveFrontWallRight {
+  from {
+    transform: translateX(-500px) skewY(15deg);
+  }
+  to {
+    transform: translateX(0) skewY(15deg);
+  }
+}
+
+@keyframes moveLockLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-500px);
+  }
+}
+
+@keyframes moveLockRight {
+  from {
+    transform: translateX(-500px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes moveSideWallLeft {
+  from {
+    transform: translateX(500px) skewY(-30deg);
+  }
+  to {
+    transform: translateX(0) skewY(-30deg);
+  }
+}
+
+@keyframes moveSideWallRight {
+  from {
+    transform: translateX(0) skewY(-30deg);
+  }
+  to {
+    transform: translateX(500px) skewY(-30deg);
+  }
+}
+
+@keyframes moveRoofUp {
+  from {
+    transform: translateY(0) skewY(15deg);
+  }
+  to {
+    transform: translateY(-500px) skewY(15deg);
+  }
+}
+
+@keyframes moveRoofDown {
+  from {
+    transform: translateY(-500px) skewY(15deg);
+  }
+  to {
+    transform: translateY(0) skewY(15deg);
+  }
+}

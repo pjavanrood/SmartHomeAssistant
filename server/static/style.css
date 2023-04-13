@@ -1,0 +1,167 @@
+/* Global Styles */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 1rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.houseDiv {
+  display: flex;
+  align-items: center;
+}
+
+.house {
+  position: relative;
+  width: 750px;
+  height: 750px;
+  background-color: #2d3336;
+}
+
+.front-wall {
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  top: 369px;
+  left: 50px;
+  transform: translateX(-50%px);
+  transform: skewY(15deg);
+  bottom: -350px;
+  background: #ddd;
+  transition: 0.5s;
+}
+
+.front-wall::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.front-wall:hover {
+  transform: translateX(-200px) skewY(15deg);
+}
+
+.side-wall {
+  position: absolute;
+  width: 250px;
+  top: 350px;
+  right: 50px;
+  height: 300px;
+  transform: translateX(-50%);
+  transform: skewY(-30deg);
+  background: #ccc;
+  transition: 0.5s;
+}
+
+.side-wall:hover {
+  transform: translateX(200px) skewY(-30deg);
+}
+
+.side-wall::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.roof {
+  position: absolute;
+  top: 140px;
+  left: 10px;
+  width: 420px;
+  border-bottom: 125px solid #1b1b1b;
+  border-left: 25px solid transparent;
+  height: 100px;
+  transform: skewY(15deg);
+  transition: 0.5s;
+}
+
+.roof:hover {
+  transform: translateY(-200px) skewY(15deg);
+}
+
+.roof::after {
+  content: '';
+  position: absolute;
+  top: -15px;
+  right: -275px;
+  width: 250px;
+  border-bottom: 125px solid #141414;
+  border-right: 25px solid transparent;
+  transform: skewY(-40deg);
+}
+
+.roof::before {
+  content: '';
+  position: absolute;
+  top: -110px;
+  left: 125px;
+  height: 210px;
+  width: 420px;
+  background: #242424;
+  right: -275px;
+  transform: skewx(-50deg);
+}
+
+
+/* Footer Styles */
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+canvas {
+  width: 500;
+  height: 500;
+}
+
+.audiovis {
+  min-height: 100vh;
+  display: flex;
+  grid-template-rows: 1fr;
+  margin: 0;
+  justify-content: center;
+}

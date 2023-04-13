@@ -1,0 +1,591 @@
+/* THIS FILE DEFINES THE STYLES/ANIMATIONS OF HTML ELEMENTS IN webpage.html */
+
+/* Global Styles */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+*{
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* ALL TOP/LEFT/RIGHT/BOTTOM/HEIGHT/WIDTH FIELDS PERTAIN TO THE DIMENSIONS/POSITIONING OF THEIR
+    RESPECTIVE ELEMENTS
+*/
+
+/* declare variables */
+:root {
+  --outside-opacity: 1; /* opacity of outside elements (less than 1 when lining up interior) */
+  --outside-z: 10 /* z-index of outside elements */;
+  --inside-z: 0 /* z-index of inside elements */;
+
+  /* turn this to -100 for no buttons and 100 for buttons (excluding wall button) */
+  --button-vis: -100;
+}
+
+/* Defines the header block section */
+header {
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header element{
+  list-style: none;
+  margin: 0;
+  padding: 30px;
+  display: flex;
+  margin-right: 1rem;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Defines the device status display section */
+.device-status-bar {
+  margin-top: 50px;
+  margin-left: 400px;
+  margin-right: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.device-status {
+  width: 30%;
+  background-color: #333;
+  padding: 20px;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.device-status h3 {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 5%;
+}
+
+.houseDiv {
+  display: flex;
+  align-items: center;
+}
+
+/* the backdrop of the house model */
+.house {
+  overflow: hidden; /* do not show walls/roof when they move past the bounds of the backdrop */
+  position: relative;
+  top: -70px;
+  width: 750px;
+  height: 750px;
+  min-width: 750px; /* prevent backdrop from resizing when webpage resizes */
+  min-height: 750px; /* prevent backdrop from resizing when webpage resizes */
+  background-color: #2d3336;
+}
+
+/* style of lock button (for debug) */
+.lock-toggle {
+  z-index: var(--button-vis);
+  position: absolute;
+  top: 2%;
+  left: 16%;
+  width: 80px;
+  height: 40px;
+}
+
+/* style of wall button */
+.wall-toggle {
+  z-index: 100;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 80px;
+  height: 40px;
+}
+
+/* style of on button (for debug) */
+.light-on {
+  z-index: var(--button-vis);
+  position: absolute;
+  top: 2%;
+  left: 31%;
+  width: 80px;
+  height: 40px;
+}
+
+/* style of red button (for debug) */
+.light-red {
+  z-index: var(--button-vis);
+  position: absolute;
+  top: 2%;
+  left: 46%;
+  width: 80px;
+  height: 40px;
+}
+
+/* style of green button (for debug) */
+.light-green {
+  z-index: var(--button-vis);
+  position: absolute;
+  top: 2%;
+  left: 61%;
+  width: 80px;
+  height: 40px;
+}
+
+/* style of blue button (for debug) */
+.light-blue {
+  z-index: var(--button-vis);
+  position: absolute;
+  top: 2%;
+  left: 76%;
+  width: 80px;
+  height: 40px;
+}
+
+/* style for the front wall */
+.front-wall {
+  z-index: var(--outside-z);
+  opacity: var(--outside-opacity);
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  top: 369px;
+  left: 50px;
+  transform: translateX(-50%px); /* give the front wall its isometric look */
+  transform: skewY(15deg);       /* give the front wall its isometric look */
+  bottom: -350px;
+  background: #ddd;
+  transition: 0.5s; /* set the timing for its animation */
+  position: relative;
+}
+
+/* set the style of the door element */
+.door {
+  z-index: var(--outside-z);
+  position: absolute;
+  transform: skewY(15deg); /* give the door its isometric view */
+  width: 100px;
+  height: 200px;
+  top: 62.2%;
+  left: 25%;
+  background: #141414;
+}
+
+/* set the style of the lock icon */
+.lock-icon {
+  z-index: var(--outside-z);
+  position: absolute;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  top: 70%;
+  left: 20%;
+  border-radius: 70%;
+  background-color: green; /* set the default colour of the icon to green (unlocked) */
+}
+
+/* set the look of the inside of the lock icon */
+.lock-icon::before {
+  content: "\f023"; /* apply the padlock icon to the middle of the main icon body */
+  font-family: "FontAwesome";
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  line-height: 35px;
+  padding-left: 7px;
+}
+
+/* give the front wall its shadow imposed by the roof */
+.front-wall::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.1); /* set it to black with alpha 0.1, creating a shadow look at the top of wall */
+}
+
+/* set the look of the side wall */
+.side-wall {
+  z-index: var(--outside-z);
+  opacity: var(--outside-opacity);
+  position: absolute;
+  width: 250px;
+  top: 351px;
+  right: 51px;
+  height: 300px;
+  transform: translateX(-50%); /* give the side wall its isometric look */
+  transform: skewY(-30deg);    /* give the side wall its isometric look */
+  background: #ccc;
+  transition: 0.5s; /* set the animation speed for side wall */
+}
+
+/* give the side wall its shadow imposed by the roof */
+.side-wall::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.1); /* set it to black with alpha 0.1, creating a shadow look at the top of wall */
+}
+
+/* set the style of the floor */
+.floor {
+  position: absolute;
+  top: 65.5%;
+  left: 23.3%;
+  height: 210px;
+  width: 53.5%;
+  background-image: url('textures/checker.jpg'); /* give the floor the checkered texture */
+  background-size: 100% 100%;
+  right: -275px;
+  transform: skewy(15deg) skewx(-50deg); /* give the floor its isometric look */
+}
+
+/* set the style of the couch PNG */
+.couch {
+  position: absolute;
+  top: -65.5%;
+  left: 10%;
+  height: 125%;
+  width: 60%;
+  transform: skewy(-20deg) skewx(40deg) rotateZ(-6deg); /* adjust the skew/rotation of the couch */
+}
+
+/* set the style of the table PNG */
+.table {
+  position: absolute;
+  top: -15.5%;
+  left: 15%;
+  height: 155%;
+  width: 70%;
+  transform: skewy(-20deg) skewx(40deg) rotateZ(-6deg); /* adjust the skew/rotation of the table */
+}
+
+/* give the roof its style (this is the sloped part above front wall) */
+.roof {
+  z-index: var(--outside-z);
+  opacity: var(--outside-opacity);
+  position: absolute;
+  top: 140px;
+  left: 10px;
+  width: 420px;
+  border-bottom: 125px solid #1b1b1b; /* this is the actual visible part */
+  border-left: 25px solid transparent;
+  height: 100px;
+  transform: skewY(15deg); /* give this element its isometric look */
+  transition: 0.5s; /* set the animations speed */
+}
+
+/* give the roof its style (this is the sloped part above side wall) */
+.roof::after {
+  content: '';
+  position: absolute;
+  top: -14px;
+  right: -273px;
+  width: 250px;
+  border-bottom: 123px solid #141414;
+  border-right: 25px solid transparent;
+  transform: skewY(-40deg); /* give the element its isometric look */
+}
+
+/* this is the flat top part of the roof */
+.roof::before {
+  content: '';
+  position: absolute;
+  top: -109px;
+  left: 125px;
+  height: 210px;
+  width: 420px;
+  background: #242424;
+  right: -275px;
+  transform: skewx(-50deg); /* give the element its isometric look */
+}
+
+/* set the style of the inside right wall */
+.inside-wall-right {
+  overflow: hidden; /* so that the LED glow doesnt go past the inside walls */
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  top: 30%;
+  left: 40%;
+  background: rgb(153, 150, 145);
+  transform: translateX(-50%); /* give the wall its isometric look */
+  transform: skewY(15deg);     /* give the wall its isometric look */
+  bottom: -350px;
+}
+
+/*
+  default class of the led on the inside left wall
+*/
+.led-left {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 0, 0, 1); /* set colour to black with alpba of 1 (opaque) */
+}
+
+/*
+  default class of the led on the inside left wall
+*/
+.led-right {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 0, 0, 1); /* set colour to black with alpba of 1 (opaque) */
+}
+
+/* set the style of the inside left wall */
+.inside-wall-left {
+  overflow: hidden; /* so that the LED glow doesnt go past the inside walls */
+  position: absolute;
+  z-index: 1;
+  width: 250px;
+  top: 32.5%;
+  left: 6.71%;
+  height: 300px;
+  background: rgb(136, 133, 128);
+  transform: translateX(-50%); /* give the wall its isometric look */
+  transform: skewY(-30deg);    /* give the wall its isometric look */
+}
+
+/* Defines the footer section */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+}
+
+canvas {
+  width: 1000;
+  height: 200;
+}
+
+/* Defines the audio input bar and animation */
+#sound_bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #333;
+  padding: 70px;
+}
+
+#sound_bar button {
+  margin: 10px;
+  font-size: 20px;
+  padding: 10px 20px;
+  background-color: white;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.audiovis {
+  height: 50px;
+  background-color: #333;
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* animation classes */
+
+/* forward front wall animation called by index.js */
+.move-front-wall {
+  animation-name: moveFrontWallLeft; /* call a keyframe at the botton of CSS file */
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/* reverse front wall animation called by index.js */
+.move-front-wall-back {
+  animation-name: moveFrontWallRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/* forward lock icon animation called by index.js */
+.move-lock {
+  animation-name: moveLockLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/* reverse lock icon animation called by index.js */
+.move-lock-back {
+  animation-name: moveLockRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/* forward side wall animation called by index.js */
+.move-side-wall {
+  animation-name: moveSideWallRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/* reverse side wall animation called by index.js */
+.move-side-wall-back {
+  animation-name: moveSideWallLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/* forward roof animation called by index.js */
+.move-roof {
+  animation-name: moveRoofUp;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/* reverse roof animation called by index.js */
+.move-roof-back {
+  animation-name: moveRoofDown;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/* add the necessary attribute to make the lock locked (just make the background red) */
+.toggle-lock {
+  background-color: red;
+}
+
+/* add the necessary attributes to make the LED on (white) */
+.led-on {
+  background-color: white;
+  box-shadow: 0 0 200px 30px #fff /* set the glow of the LED to white */
+}
+
+/* add the necessary attributes to make the LED on (red) */
+.led-red {
+  background-color: red;
+  box-shadow: 0 0 200px 30px red /* set the glow of the LED to red */
+}
+
+/* add the necessary attributes to make the LED on (green) */
+.led-green {
+  background-color: green;
+  box-shadow: 0 0 200px 30px green /* set the glow of the LED to green */
+}
+
+/* add the necessary attributes to make the LED on (blue) */
+.led-blue {
+  background-color: blue;
+  box-shadow: 0 0 200px 30px blue /* set the glow of the LED to blue */
+}
+
+/* keyframes */
+
+/* animation for moving the front wall left (forward animation) */
+@keyframes moveFrontWallLeft {
+  from {
+    transform: translateX(0) skewY(15deg); /* original position (base position) */
+  }
+  to {
+    transform: translateX(-500px) skewY(15deg); /* move it left (modified position) */
+  }
+}
+
+/* animation for moving the front wall right (reverse animation) */
+@keyframes moveFrontWallRight {
+  from {
+    transform: translateX(-500px) skewY(15deg); /* original position (modified position) */
+  }
+  to {
+    transform: translateX(0) skewY(15deg); /* move it right (base position) */
+  }
+}
+
+/* move the lock left along with the front wall (its parent) */
+@keyframes moveLockLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-500px);
+  }
+}
+
+/* move the lock right along with the front wall (its parent) */
+@keyframes moveLockRight {
+  from {
+    transform: translateX(-500px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+/* animation for moving the side wall left (reverse animation) */
+@keyframes moveSideWallLeft {
+  from {
+    transform: translateX(500px) skewY(-30deg); /* original position (modified position) */
+  }
+  to {
+    transform: translateX(0) skewY(-30deg); /* move it left (base position) */
+  }
+}
+
+/* animation for moving the side wall right (forward animation) */
+@keyframes moveSideWallRight {
+  from {
+    transform: translateX(0) skewY(-30deg); /* original position (base position) */
+  }
+  to {
+    transform: translateX(500px) skewY(-30deg); /* move it right (modified position) */
+  }
+}
+
+/* animation for moving the roof up (forward animation) */
+@keyframes moveRoofUp {
+  from {
+    transform: translateY(0) skewY(15deg); /* original position (base position) */
+  }
+  to {
+    transform: translateY(-500px) skewY(15deg); /* move it up (modified position) */
+  }
+}
+
+/* animation for moving the roof down (reverse animation) */
+@keyframes moveRoofDown {
+  from {
+    transform: translateY(-500px) skewY(15deg); /* original position (modified position) */
+  }
+  to {
+    transform: translateY(0) skewY(15deg); /* move it down (base position) */
+  }
+}

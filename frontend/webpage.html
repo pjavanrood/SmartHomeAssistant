@@ -1,0 +1,82 @@
+<!-- THIS IS THE MAIN HTML FILE FOR OUR WEBPAGE -->
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Defines the title of the webpage as well as linking the associated css file -->
+  <head>
+    <meta charset="UTF-8">
+    <title>Smart Home Simulation</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <!-- Creates a header block -->
+  <header>
+    <h1>&nbsp;&nbsp;Smart Home Simulation</h1>
+      <element>CPEN 291 Group 5</element>
+  </header>
+
+  <body>
+    <!-- Creates the status display boxes for the devices -->
+    <div class="device-status-bar">
+      <div class="device-status">
+        <h3>Light Status: <span id="light-status"></span></h3>
+      </div>
+      <div class="device-status">
+        <h3>Door Status: <span id="door-status"></span></h3>
+      </div>
+      <div class="device-status">
+        <h3>Intruder Status: <span id="intruder-status"></span></h3>
+      </div>
+    </div>
+
+    <!-- Creates the various pieces of the house display model -->
+    <main>
+      <div id="house" class="house">
+        <div id="front-wall" class="front-wall"></div>
+        <div id="side-wall" class="side-wall"></div>
+
+        <div id="door" class="door"></div>
+        <div id="roof" class="roof"></div> 
+
+        <i id="lock-icon" class="lock-icon"></i>
+
+        <div id="inside-wall-left" class="inside-wall-left">
+          <div id="led-left" class="led-left"></div>
+        </div>
+        <div id="inside-wall-right" class="inside-wall-right">
+          <div id="led-right" class="led-right"></div>
+        </div>
+
+        <div id="floor" class="floor">
+          <img src="./sprites/Black_Designer_Couch_sprite_005(1).png" alt="da couch" class="couch">
+          <img src="./sprites/isometric-coffee-table-vector.png" alt="da table" class="table">
+        </div>
+
+        <button id="lock-toggle" class="lock-toggle"> Lock </button>
+        <button id="wall-toggle" class="wall-toggle"> Walls </button>
+        <button id="light-on" class="light-on"> light on </button>
+        <button id="light-red" class="light-red"> light red </button>
+        <button id="light-green" class="light-green"> light green </button>
+        <button id="light-blue" class="light-blue"> light blue </button>
+
+      </div>
+    </main>
+    
+    <!-- Creates the animated audio input bar -->
+    <div id="footer">
+      <div id="sound_bar">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <div class="audiovis">
+          <canvas></canvas>
+          <style></style>
+        </div>
+      </div>
+    </div>
+
+    <!-- Links the associated Javascript files for the house and audio animations -->
+    <script src="./audio.js"></script>
+    <script src="./index.js"></script>
+
+  </body>
+</html> 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Smart Home Simulation</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='./style.css')}}">
+  </head>
+
+  <header>
+    <h1>Smart Home Simulation</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Rooms</a></li>
+        <li><a href="#">Devices</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <body>  
+    <div>
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+
+      <div id="result">
+
+      </div>
+    </div>
+
+    <div class="audiovis">
+      <canvas></canvas>
+
+      <!-- <style>
+
+        canvas {
+          width: 500;
+          height: 500;
+        }
+
+        .audiovis {
+          min-height: 100vh;
+          display: flex;
+          grid-template-rows: 1fr;
+          margin: 0;
+          justify-content: center;
+        }
+      </style> -->
+    </div>
+
+
+    <main>
+      <div class="house">
+        <div class="front-wall"></div>
+        <div class="side-wall"></div>
+        <div class="roof"></div> 
+      </div>
+    </main>
+    
+    <footer>
+      <p>&copy; 2023 Smart Home Simulation</p>
+    </footer>
+
+    <script src="{{url_for('static', filename='./audio.js')}}"></script>
+  </body>
+</html> 
